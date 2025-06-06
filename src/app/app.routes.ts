@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { TasklistComponent } from './tasklist/tasklist.component';
+import { TasklistComponent } from './task-list/tasklist.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 
 export const routes: Routes = [
