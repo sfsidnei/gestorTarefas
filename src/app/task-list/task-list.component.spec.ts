@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TasklistComponent } from './tasklist.component';
+import { TasklistComponent } from './task-list.component';
 
 describe('TasklistComponent', () => {
   let component: TasklistComponent;

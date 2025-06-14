@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models/task';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +18,7 @@ export class TaskService {
     return this.tasks;
   }
 
-  getByid(id: number): Task | undefined {
+  getById(id: number): Task | undefined {
 
     const task = this.tasks.find( c => c.id === id);
 
@@ -25,24 +26,27 @@ export class TaskService {
   }
 
   addTask(task: Task) {
+
+    task.id = this.tasks.length + 1;
+
     this.tasks.push(task);
 
     this.saveToLocalStorage();
 
   }
 
-  updateTask() {
+  updateTasks() {
     this.saveToLocalStorage();
 
   }
 
-  removetask(task:Task ) {
+  removeTask(task: Task ) {
 
     const index = this.tasks.indexOf(task);
 
     if (index !== -1) {
        //achou
-       this.tasks.splice(index,1);
+       this.tasks.splice(index, 1);
 
        this.saveToLocalStorage();
            
@@ -67,7 +71,7 @@ export class TaskService {
       return new Array<Task>();
     }
      
-    return JSON.parse(tasksJSON)
+    return JSON.parse(tasksJSON);
 
   }
 }
