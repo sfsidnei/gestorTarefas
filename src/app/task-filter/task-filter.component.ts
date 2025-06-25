@@ -15,6 +15,6 @@ export class TaskFilterComponent
   @Output() taskFilter = new EventEmitter<string>();
 
   filterTask() {
-    this.taskFilter.emit(this.filter)
+    this.taskFilter.emit(this.filter);
   }
 } 

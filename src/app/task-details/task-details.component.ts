@@ -11,10 +11,16 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './task-details.component.css'
 })
 export class TaskDetailsComponent {
+// updateTask() {
+// throw new Error('Method not implemented.');
+// }
+// updateTask(): void {
+//   this.save(); // redireciona para o método que já funciona
+// }
 
   task?: Task;
 
-  constructor( private router: Router, private route: ActivatedRoute,private taskServive: TaskService) {}
+  constructor( private router: Router, private route: ActivatedRoute,private taskService: TaskService) {}
 
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
@@ -24,7 +30,7 @@ export class TaskDetailsComponent {
     }
     else 
   {
-    this.task = this.taskServive.getById(+id);
+    this.task = this.taskService.getById(+id);
 
     if (this.task === undefined) {
       this.navigateBack();
@@ -34,16 +40,16 @@ export class TaskDetailsComponent {
   }
 
   save() {
-    this.taskServive.updateTasks();
+    this.taskService.updateTasks();
 
-    this.navigateBack
+    this.navigateBack();
   }
 
   cancel() {
     this.navigateBack();
   }
 
-  private navigateBack(){
+  private navigateBack() {
     this.router.navigate(['/taskList'], {relativeTo: this.route});
   }
 
